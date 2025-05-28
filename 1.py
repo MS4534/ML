@@ -40,3 +40,34 @@ plt.title(f"Histogram of{num_col}")
 plt.xlabel("num_col")
 plt.ylabel("frequency")
 plt.show
+
+Q1=df[num_col].quantile(0.25)
+Q3=df[num_col].quantile(0.75)
+IQR=Q3-Q1
+lower_bound=Q1-1.5*IQR
+upper_bound=Q3+1.5*IQR
+outlires=df[(df[num_col]<lower_bound)|(df[num_col]>upper_bound)]
+print("\n outlires in the dataset")
+print(outlires[num_col])
+
+category='Survived'
+
+cat_count=df[category].value_counts()
+cat_count
+
+
+
+plt.figure(figsize=(6,6))
+plt.pie(cat_count, labels=cat_count.index, colors=["pink", "red"])
+plt.title(f"pie chart of {category}")
+plt.show()
+
+plt.figure(figsize=(6,6))
+plt.pie(cat_count, labels=cat_count.index,autopct="%1.1f%%" ,colors=["pink", "red"])
+plt.title(f"pie chart of {category}")
+plt.show()
+
+plt.figure(figsize=(10,5))
+ns.boxplot(x=df[num_col],color='yellow')
+plt.title(f"boxplot {num_col}")
+plt.show()
