@@ -32,7 +32,7 @@ print('range:',range)
 med_val=df[num_col].median()
 print('median',med_val)
 
-pip install seaborn
+!pip install seaborn
 
 plt.figure(figsize=(10,5))
 ns.distplot(df[num_col],bins=20,kde=True,color='pink')
